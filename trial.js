@@ -2,14 +2,14 @@
 
 
 	
-var addButton=document.getElementById("add");
+ var addButton=document.getElementById("add");
  addButton.addEventListener('click', addMentee);
  function addMentee() {
    
 
 
-var table=document.getElementById("final");
-table.contentEditable="true";
+        var table=document.getElementById("final");
+        table.contentEditable="true";
 
 
 	var menteeName=document.getElementById("inputbox").value;
@@ -49,50 +49,29 @@ function deleteRow(r){
    
     
 }
-
 var sortButton=document.getElementById("sort");
- sortButton.addEventListener('click', sortMentees);
+sortButton.addEventListener('click', sortMentees);
 
-/*function sortMentees(){
-	var tbody=document.getElementsByTagName("tbody")[0];
-	var rows = tbody.rows,
-                rlen = rows.length,
-                arr = new Array(),
-                i, j, cells, clen;
-   for (i = 0; i < rlen; i++) {
-                cells = rows[i].cells;
-                clen = cells.length;
-                arr[i] = new Array();
-                for (j = 0; j < clen; j++) {
-                    arr[i][j] = cells[j].innerHTML;
-                }
-            }
-    arr.sort(function (a, b) {
-                return (a[1] == b[1]) ? 0 : ((a[1] > b[1]) ? asc : -1 * asc);
-            });
-    for (i = 0; i < rlen; i++) {
-                rows[i].innerHTML = "<td>" + arr[i].join("</td><td>") + "</td>";
-            }
-        }*/
+
 function sortMentees() {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("final");
-  switching = true;
-  
-  while (switching) {
-    
-    switching = false;
-    rows = table.getElementsByTagName("tr");
-    
-    for (i = 1; i < (rows.length - 1); i++) {
-      
-      x = rows[i].getElementsByTagName("td")[1];
-      y = rows[i + 1].getElementsByTagName("td")[1];
-      
-      if (x.innerHTML > y.innerHTML) {
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching=true;
-        break;
+	  var table, rows, switching, i, x, y, shouldSwitch;
+	  table = document.getElementById("final");
+	  switching = true;
+
+	  while (switching) {
+
+	    switching = false;
+	    rows = table.getElementsByTagName("tr");
+
+	    for (i = 1; i < (rows.length - 1); i++) {
+
+	      x = rows[i].getElementsByTagName("td")[1];
+	      y = rows[i + 1].getElementsByTagName("td")[1];
+
+	      if (x.innerHTML > y.innerHTML) {
+		rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+		switching=true;
+		break;
       }
     }
     
