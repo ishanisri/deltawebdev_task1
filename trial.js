@@ -1,18 +1,18 @@
+ 
 
 
 
-	
+
 var addButton=document.getElementById("add");
  addButton.addEventListener('click', addMentee);
  function addMentee() {
+ 	
    
 
 
-var table=document.getElementById("final");
-table.contentEditable="true";
-
-
-	var menteeName=document.getElementById("inputbox").value;
+  var table=document.getElementById("final");
+  table.contentEditable="true";
+  var menteeName=document.getElementById("inputbox").value;
 
 	var row=table.insertRow(-1);
 
@@ -20,9 +20,12 @@ table.contentEditable="true";
 	var rating=row.insertCell(1);
 	var comments=row.insertCell(2);
 	name.innerHTML=menteeName;
-	comments.innerHTML=document.getElementById('comments').value;
-
-	rating.innerHTML=document.getElementById("ratings").value;
+	
+	var com=document.getElementById('comments').value;
+    comments.innerHTML=com;
+	
+	var rat=document.getElementById("ratings").value;
+	rating.innerHTML=rat;
 	var btn=document.createElement("button");
 	       // Create a <button> element
 	var t = document.createTextNode("delete");       // Create a text node
@@ -33,10 +36,25 @@ table.contentEditable="true";
 	row.style.fontWeight='normal';
 	
 	btn.setAttribute("style","background-color:red;border:1;text-align: center;display: inline-block;font-size: 16px;color:white;width:100%;height:100%");
-  document.getElementById("inputbox").value="";
-  document.getElementById("comments").value="";
-  document.getElementById("ratings").value=1;
+    var length=row.rowIndex;
 
+    
+    var rate=parseInt(rating,10);
+    var g=(rate/5)*255;
+    var r=(5-rate)/5*255;
+    
+    //var td=document.getElementsByTagName("tr");
+    row.style.backgroundColor="rgb(r,g,0)";
+    localStorage.setItem("mentee+JSON.stringify(length)",menteeName);
+    localStorage.setItem("ratings+JSON.stringify(length)",rat);
+    localStorage.setItem("comments+JSON.stringify(length)",com);
+    document.getElementById("inputbox").value="";
+   document.getElementById("comments").value="";
+   document.getElementById("ratings").value=1;
+
+
+
+  
 
 }
 
@@ -47,6 +65,10 @@ function deleteRow(r){
 	 var row=r.parentNode.parentNode;
 	
 	row.removeChild(r.parentNode);
+	localStorage.removeItem("menteeName");
+	localStorage.removeItem("ratings");
+	localStorage.removeItem("comments");
+	
 	
    
     

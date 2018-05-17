@@ -18,7 +18,7 @@ body{
     font-family:helvetica ; font-size: 100%; line-height: 1.2em; width: 100%; margin: 10; background:white;
     text-align:center;
 }
-div{
+#div{
 	font-family:helvetica ; font-size: 100%; line-height: 1.2em; width: 100%;  background: grey;
 	padding:25px;
     text-align:center;
